@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Infinity Service Ops Control Plane</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-card">
+          <div class="brand-mark" aria-hidden="true">∞</div>
+          <div>
+            <p class="eyebrow">Infinity Service Ops</p>
+            <h1>Sovereign operations control plane</h1>
+          </div>
+        </div>
+
+        <div class="tenant-card">
+          <span class="status-dot"></span>
+          <div>
+            <strong>UK Regulated Tenant</strong>
+            <span>Hybrid · UK South primary</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Workspace sections">
+          <button class="nav-item active" type="button" data-view="overview">
+            <span>Command center</span>
+            <small>Live operations</small>
+          </button>
+          <button class="nav-item" type="button" data-view="sovereignty">
+            <span>Sovereignty</span>
+            <small>Residency & keys</small>
+          </button>
+          <button class="nav-item" type="button" data-view="automation">
+            <span>Automation</span>
+            <small>Guardrailed workflows</small>
+          </button>
+          <button class="nav-item" type="button" data-view="secops">
+            <span>SecOps</span>
+            <small>Cases & evidence</small>
+          </button>
+          <button class="nav-item" type="button" data-view="ai">
+            <span>AI governance</span>
+            <small>Private model routing</small>
+          </button>
+        </nav>
+
+        <div class="security-card">
+          <p class="eyebrow">Security baseline</p>
+          <div class="baseline-score">97%</div>
+          <span>Zero Trust posture, tenant isolation, approval coverage, and audit streams are enforced.</span>
+        </div>
+      </aside>
+
+      <main id="main" class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Enterprise service operations</p>
+            <h2>Run critical work without surrendering operational data.</h2>
+          </div>
+          <div class="topbar-actions" aria-label="Workspace actions">
+            <button class="ghost-button" type="button" id="simulate-policy">Simulate policy evaluation</button>
+            <button class="primary-button" type="button" id="route-approval">Route to approval</button>
+          </div>
+        </header>
+
+        <section class="hero-grid" aria-label="Platform status summary">
+          <article class="hero-card span-2">
+            <div class="hero-copy">
+              <p class="eyebrow">Control plane snapshot</p>
+              <h3>Tenant-safe ITSM, CMDB, ITOM, SecOps, automation, and AI guardrails in one workspace.</h3>
+              <p>
+                The live app turns the existing architecture direction into an operator-facing experience:
+                policy-first workflows, explainable approvals, sovereign data boundaries, and audit-ready evidence.
+              </p>
+            </div>
+            <div class="orbit" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <strong>∞</strong>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <span>Open priority incidents</span>
+            <strong id="incident-count">3</strong>
+            <small>1 P1 · 2 P2</small>
+          </article>
+          <article class="metric-card">
+            <span>Automation guardrails</span>
+            <strong>12</strong>
+            <small>All required controls active</small>
+          </article>
+          <article class="metric-card">
+            <span>Data egress</span>
+            <strong>0</strong>
+            <small>External AI blocked by default</small>
+          </article>
+          <article class="metric-card">
+            <span>Audit coverage</span>
+            <strong>99.8%</strong>
+            <small>Signed event envelope ready</small>
+          </article>
+        </section>
+
+        <section class="workspace-panel active" id="overview" aria-labelledby="overview-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Command center</p>
+              <h3 id="overview-title">Operational timeline and service graph</h3>
+            </div>
+            <span class="pill success">Tenant boundary intact</span>
+          </div>
+
+          <div class="content-grid">
+            <article class="panel timeline-panel">
+              <div class="panel-heading">
+                <h4>Operational timeline</h4>
+                <span>Now · UK South</span>
+              </div>
+              <div class="timeline" id="timeline"></div>
+            </article>
+
+            <article class="panel graph-panel">
+              <div class="panel-heading">
+                <h4>Service graph impact</h4>
+                <span>CMDB dependencies</span>
+              </div>
+              <div class="service-map" aria-label="Service dependency map">
+                <div class="node primary">Identity Governance</div>
+                <div class="connector-line"></div>
+                <div class="node">Entra Sync</div>
+                <div class="node">M365 Bridge</div>
+                <div class="node danger">Mail Routing</div>
+              </div>
+              <div class="impact-list">
+                <span>4 downstream dependencies</span>
+                <span>2 protected by maintenance window</span>
+                <span>1 awaiting two-person approval</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="workspace-panel" id="sovereignty" aria-labelledby="sovereignty-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Sovereignty</p>
+              <h3 id="sovereignty-title">Residency, tenant isolation, and customer-managed key posture</h3>
+            </div>
+            <span class="pill success">Hybrid mode approved</span>
+          </div>
+          <div class="content-grid three">
+            <article class="panel posture-card">
+              <h4>Data boundary</h4>
+              <strong>UK South</strong>
+              <p>Operational records, evidence, audit events, and regulated workflow state remain inside the approved region.</p>
+            </article>
+            <article class="panel posture-card">
+              <h4>Key management</h4>
+              <strong>CMK required</strong>
+              <p>Tenant bootstrap policy requires customer-managed encryption before production systems can attach.</p>
+            </article>
+            <article class="panel posture-card">
+              <h4>Connector egress</h4>
+              <strong>Allowlist only</strong>
+              <p>Microsoft 365, Okta, GitHub, and Google Workspace flows declare capabilities before activation.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="workspace-panel" id="automation" aria-labelledby="automation-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Automation library</p>
+              <h3 id="automation-title">Enterprise-ready workflows with explicit approval gates</h3>
+            </div>
+            <span class="pill">3 templates ready</span>
+          </div>
+          <div class="automation-grid" id="automation-grid"></div>
+        </section>
+
+        <section class="workspace-panel" id="secops" aria-labelledby="secops-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SecOps detail</p>
+              <h3 id="secops-title">Cases, evidence, remediation, and chain-of-custody status</h3>
+            </div>
+            <span class="pill warning">1 critical case</span>
+          </div>
+          <div class="content-grid">
+            <article class="panel">
+              <div class="panel-heading">
+                <h4>Security case queue</h4>
+                <span>Evidence attached</span>
+              </div>
+              <div class="case-list" id="case-list"></div>
+            </article>
+            <article class="panel evidence-panel">
+              <h4>Evidence controls</h4>
+              <ul>
+                <li>Chain-of-custody metadata attached automatically.</li>
+                <li>Remediation tasks require rollback runbooks.</li>
+                <li>Maintenance windows are enforced for production systems.</li>
+                <li>Audit trail follows the incident, case, change, and workflow execution.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="workspace-panel" id="ai" aria-labelledby="ai-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">AI governance</p>
+              <h3 id="ai-title">Approval-aware assistance with private routing and redaction controls</h3>
+            </div>
+            <span class="pill success">External training disabled</span>
+          </div>
+          <div class="ai-console panel">
+            <div>
+              <h4>Incident triage copilot</h4>
+              <p>
+                Metadata-only triage can run on internal providers. Regulated prompts are redacted and require human approval
+                before execution.
+              </p>
+            </div>
+            <div class="policy-stack">
+              <span>Local/private model preferred</span>
+              <span>Human approval for regulated actions</span>
+              <span>Prompt redaction before execution</span>
+              <span>No external model training</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="audit-strip panel" aria-label="Audit activity">
+          <div class="panel-heading">
+            <h4>Policy and audit ledger</h4>
+            <span id="ledger-count">4 events</span>
+          </div>
+          <div class="ledger" id="ledger"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

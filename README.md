@@ -36,7 +36,7 @@ Infinity Service Ops is built to prioritize:
 
 ## Current project status
 
-This repository is currently a **high-quality architecture and domain scaffold** rather than a finished product.
+This repository is currently a **high-quality architecture and domain scaffold** with an initial operator-facing frontend app.
 
 What is already implemented:
 
@@ -52,6 +52,7 @@ What is already implemented:
 - AI execution guardrails
 - knowledge search with citations
 - automation template library
+- branded frontend control plane app
 
 ## Showcase
 
@@ -84,6 +85,11 @@ What is already implemented:
 
 - `apps/migrator`  
   Logical schema and migration bootstrap surface.
+
+### Frontend app
+
+- `apps/frontend`  
+  Dependency-free browser control plane for operators, covering command-center telemetry, sovereignty posture, guardrailed automation, SecOps evidence, AI governance, and the policy/audit ledger.
 
 ### Shared crates
 
@@ -307,6 +313,17 @@ Infinity Service Ops is trying to win on:
 cargo test --workspace
 ```
 
+### Run the frontend app
+
+The initial frontend lives in `apps/frontend` and is a dependency-free browser app aligned with the current Infinity Service Ops control-plane theme.
+
+```powershell
+cd apps\frontend
+python -m http.server 4173
+```
+
+Then open <http://localhost:4173>. You can also open `apps/frontend/index.html` directly in a browser.
+
 ### Run representative binaries
 
 ```powershell
@@ -337,7 +354,7 @@ It currently runs:
 - add real Axum APIs
 - add tenant-safe storage boundaries
 - enforce workflow guardrails at runtime
-- build a real web UI over the current architecture
+- connect the frontend app to real Axum APIs and tenant-safe persistence
 
 ### Later
 
