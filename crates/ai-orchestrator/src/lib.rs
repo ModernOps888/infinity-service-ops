@@ -35,6 +35,7 @@ impl AiProviderPolicy {
 pub enum AiGuardrailViolation {
     ExternalInferenceBlocked,
     SecretRedactionRequired,
+    PromptRetentionNotAllowed,
     ProviderNotAllowed,
 }
 
@@ -53,15 +54,22 @@ pub struct AiExecutionPlan {
 }
 
 pub fn can_run_capability(
-    policy: &SovereigntyPolicy,
+    _policy: &SovereigntyPolicy,
     provider_policy: &AiProviderPolicy,
     capability: &AiCapability,
 ) -> Result<(), AiGuardrailViolation> {
-    if capability.data_classes.contains(&DataClass::Regulated)
-        && provider_policy.allow_external_inference
-        && !policy.allow_external_model_training
-    {
+    let regulated = capability.data_classes.contains(&DataClass::Regulated);
+
+    // Regulated data must never leave the sovereign boundary via external inference,
+    // regardless of any external-training allowance.
+    if regulated && provider_policy.allow_external_inference {
         return Err(AiGuardrailViolation::ExternalInferenceBlocked);
+    }
+
+    // Prompt retention creates a durable copy of regulated data outside the workflow;
+    // it is not permitted for regulated capabilities.
+    if regulated && provider_policy.retain_prompts {
+        return Err(AiGuardrailViolation::PromptRetentionNotAllowed);
     }
 
     if !provider_policy.redact_secrets {
@@ -79,7 +87,13 @@ pub fn plan_execution(
 ) -> Result<AiExecutionPlan, AiGuardrailViolation> {
     can_run_capability(policy, provider_policy, capability)?;
 
-    if provider == AiProviderKind::ExternalApi && !provider_policy.allow_external_inference {
+    let regulated = capability.data_classes.contains(&DataClass::Regulated);
+
+    // Regulated capabilities can never target an external API provider, and any external
+    // provider requires an explicit external-inference allowance.
+    if provider == AiProviderKind::ExternalApi
+        && (regulated || !provider_policy.allow_external_inference)
+    {
         return Err(AiGuardrailViolation::ProviderNotAllowed);
     }
 
@@ -148,5 +162,58 @@ mod tests {
                 prompt_redaction_required: true,
             }
         );
+    }
+
+    #[test]
+    fn blocks_regulated_external_api_even_when_external_training_is_allowed() {
+        let capability = AiCapability {
+            name: "regulated-summarizer",
+            requires_human_approval: true,
+            data_classes: vec![DataClass::Regulated],
+        };
+
+        let permissive_policy = SovereigntyPolicy {
+            allow_external_model_training: true,
+            ..SovereigntyPolicy::sovereign_default()
+        };
+
+        // Even with external inference switched on, regulated data must not reach an external API.
+        let provider = AiProviderPolicy {
+            allow_external_inference: true,
+            redact_secrets: true,
+            retain_prompts: false,
+        };
+
+        let result = plan_execution(
+            &permissive_policy,
+            &provider,
+            &capability,
+            AiProviderKind::ExternalApi,
+        );
+
+        assert_eq!(result, Err(AiGuardrailViolation::ExternalInferenceBlocked));
+    }
+
+    #[test]
+    fn blocks_prompt_retention_for_regulated_data() {
+        let capability = AiCapability {
+            name: "regulated-triage",
+            requires_human_approval: false,
+            data_classes: vec![DataClass::Regulated],
+        };
+
+        let provider = AiProviderPolicy {
+            allow_external_inference: false,
+            redact_secrets: true,
+            retain_prompts: true,
+        };
+
+        let result = can_run_capability(
+            &SovereigntyPolicy::sovereign_default(),
+            &provider,
+            &capability,
+        );
+
+        assert_eq!(result, Err(AiGuardrailViolation::PromptRetentionNotAllowed));
     }
 }

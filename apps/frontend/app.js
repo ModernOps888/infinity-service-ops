@@ -62,6 +62,14 @@ const ledgerItems = [
   ["10:21", "audit.record.appended", "Incident and policy evaluation linked"],
 ];
 
+const escapeHtml = (value) =>
+  String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+
 const renderTimeline = () => {
   const timeline = document.querySelector("#timeline");
   timeline.innerHTML = timelineItems
@@ -70,9 +78,9 @@ const renderTimeline = () => {
         <article class="timeline-item ${item.tone === "danger" ? "danger" : ""}">
           <span class="timeline-marker" aria-hidden="true"></span>
           <div>
-            <p class="eyebrow">${item.label}</p>
-            <strong>${item.title}</strong>
-            <p>${item.body}</p>
+            <p class="eyebrow">${escapeHtml(item.label)}</p>
+            <strong>${escapeHtml(item.title)}</strong>
+            <p>${escapeHtml(item.body)}</p>
           </div>
         </article>
       `,
@@ -87,10 +95,10 @@ const renderAutomation = () => {
       (template) => `
         <article class="panel automation-card">
           <p class="eyebrow">Enterprise template</p>
-          <strong>${template.name}</strong>
-          <p>${template.description}</p>
+          <strong>${escapeHtml(template.name)}</strong>
+          <p>${escapeHtml(template.description)}</p>
           <div class="guardrails">
-            ${template.guardrails.map((guardrail) => `<span>${guardrail}</span>`).join("")}
+            ${template.guardrails.map((guardrail) => `<span>${escapeHtml(guardrail)}</span>`).join("")}
           </div>
         </article>
       `,
@@ -104,9 +112,9 @@ const renderCases = () => {
     .map(
       (item) => `
         <article class="case-item">
-          <p class="eyebrow">${item.id}</p>
-          <strong>${item.title}</strong>
-          <p>${item.body}</p>
+          <p class="eyebrow">${escapeHtml(item.id)}</p>
+          <strong>${escapeHtml(item.title)}</strong>
+          <p>${escapeHtml(item.body)}</p>
         </article>
       `,
     )
@@ -121,9 +129,9 @@ const renderLedger = () => {
     .map(
       ([time, event, description]) => `
         <article class="ledger-item">
-          <span>${time}</span>
-          <strong>${event}</strong>
-          <small>${description}</small>
+          <span>${escapeHtml(time)}</span>
+          <strong>${escapeHtml(event)}</strong>
+          <small>${escapeHtml(description)}</small>
         </article>
       `,
     )

@@ -4,14 +4,14 @@ version = 4
 
 [[package]]
 name = "ai-orchestrator"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-domain",
 ]
 
 [[package]]
 name = "api-gateway"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "audit-core",
  "event-core",
@@ -21,7 +21,7 @@ dependencies = [
 
 [[package]]
 name = "audit-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "event-core",
  "platform-core",
@@ -29,7 +29,7 @@ dependencies = [
 
 [[package]]
 name = "automation-library"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "integration-core",
  "platform-core",
@@ -39,7 +39,7 @@ dependencies = [
 
 [[package]]
 name = "cmdb-domain"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-core",
  "platform-domain",
@@ -47,7 +47,7 @@ dependencies = [
 
 [[package]]
 name = "connector-host"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "event-core",
  "integration-core",
@@ -56,7 +56,7 @@ dependencies = [
 
 [[package]]
 name = "control-plane"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "ai-orchestrator",
  "audit-core",
@@ -72,14 +72,14 @@ dependencies = [
 
 [[package]]
 name = "event-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-core",
 ]
 
 [[package]]
 name = "event-relay"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "audit-core",
  "event-core",
@@ -89,7 +89,7 @@ dependencies = [
 
 [[package]]
 name = "integration-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-domain",
  "security-foundation",
@@ -97,7 +97,7 @@ dependencies = [
 
 [[package]]
 name = "itom-domain"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cmdb-domain",
  "platform-core",
@@ -105,14 +105,14 @@ dependencies = [
 
 [[package]]
 name = "migrator"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-domain",
 ]
 
 [[package]]
 name = "persistence-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "audit-core",
  "event-core",
@@ -121,18 +121,18 @@ dependencies = [
 
 [[package]]
 name = "platform-core"
-version = "0.1.0"
+version = "0.1.1"
 
 [[package]]
 name = "platform-domain"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-core",
 ]
 
 [[package]]
 name = "policy-engine"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-domain",
  "security-foundation",
@@ -140,14 +140,14 @@ dependencies = [
 
 [[package]]
 name = "search-knowledge"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-domain",
 ]
 
 [[package]]
 name = "secops-domain"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cmdb-domain",
  "itom-domain",
@@ -156,14 +156,14 @@ dependencies = [
 
 [[package]]
 name = "security-foundation"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-domain",
 ]
 
 [[package]]
 name = "worker"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "event-core",
  "persistence-core",
@@ -172,7 +172,7 @@ dependencies = [
 
 [[package]]
 name = "workflow-engine"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "platform-core",
 ]

@@ -155,15 +155,32 @@ This scaffold is not "impenetrable" today, and no honest platform can guarantee 
 - policy hooks where enforcement belongs
 - a structure ready for deeper hardening
 
+### Security hardening completed (this iteration)
+
+A focused security assessment of the current scaffold identified and fixed the following
+access-control and data-egress weaknesses:
+
+- **Tenant-scoped RBAC enforcement** — `AuthorizationContext` now only honors roles whose
+  `tenant_id` matches the user's tenant, closing a cross-tenant privilege-escalation gap.
+- **Audience-aware knowledge search** — `search-knowledge` filters results by the caller's
+  clearance so `Internal` runbooks/known-errors never leak to tenant or public callers; the
+  default `query` is public-only (safe by default).
+- **Regulated-data AI egress guardrails** — regulated capabilities can never be routed to an
+  external API provider, and prompt-retaining providers are rejected for regulated data.
+- **XSS-safe frontend rendering** — all operator-facing views HTML-escape dynamic record
+  fields before insertion, preventing stored XSS once wired to live tenant data.
+- **Frontend Content-Security-Policy** — a strict same-origin CSP plus `no-referrer` policy
+  is enforced in the control-plane app.
+
 Further production hardening still required:
 
-- real authn/authz enforcement middleware
+- real authn/authz enforcement middleware (transport + session layer)
 - signed connector manifests
 - request signing and replay protection
 - tamper-evident audit chain persistence
 - secret broker / KMS integration
 - row-level security and per-tenant persistence isolation
-- network egress policy enforcement
+- network egress policy enforcement (incl. clickjacking headers at the serving layer)
 - backup / restore / key rotation procedures
 - full threat modeling and penetration testing
 
@@ -355,6 +372,10 @@ It currently runs:
 - add tenant-safe storage boundaries
 - enforce workflow guardrails at runtime
 - connect the frontend app to real Axum APIs and tenant-safe persistence
+
+> Recently completed: tenant-scoped RBAC enforcement, audience-aware knowledge search,
+> regulated-data AI egress guardrails, XSS-safe frontend rendering, and a strict frontend CSP
+> (see the security hardening notes above and `CHANGELOG.md`).
 
 ### Later
 

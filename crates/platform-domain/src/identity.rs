@@ -98,7 +98,57 @@ impl<'a> AuthorizationContext<'a> {
             && self
                 .roles
                 .iter()
+                .filter(|role| role.tenant_id == self.user.tenant_id)
                 .filter(|role| self.user.has_role(&role.id))
                 .any(|role| role.grants(permission))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{AuthorizationContext, Permission, Role, User, UserStatus};
+    use crate::primitives::{ActorRef, RecordMeta, TenantId, UserId};
+
+    fn role(id: &str, tenant: &str, permission: Permission) -> Role {
+        let tenant_id = TenantId::new(tenant);
+        Role {
+            id: id.to_string(),
+            tenant_id: tenant_id.clone(),
+            name: id.to_string(),
+            permissions: vec![permission],
+            meta: RecordMeta::bootstrap(tenant_id, ActorRef::system("test")),
+        }
+    }
+
+    fn user(tenant: &str, role_ids: Vec<String>) -> User {
+        User {
+            id: UserId::new("user-1"),
+            tenant_id: TenantId::new(tenant),
+            external_subject: "user-1".to_string(),
+            email: "user@example.com".to_string(),
+            display_name: "User One".to_string(),
+            status: UserStatus::Active,
+            primary_team_id: None,
+            role_ids,
+        }
+    }
+
+    #[test]
+    fn grants_permission_for_same_tenant_role() {
+        let user = user("tenant-a", vec!["admin".to_string()]);
+        let roles = [role("admin", "tenant-a", Permission::ManageTenant)];
+        let ctx = AuthorizationContext::new(&user, &roles);
+
+        assert!(ctx.allows(Permission::ManageTenant));
+    }
+
+    #[test]
+    fn rejects_role_from_another_tenant_even_with_matching_id() {
+        let user = user("tenant-a", vec!["admin".to_string()]);
+        // Same role id, but scoped to a different tenant: must not grant access.
+        let roles = [role("admin", "tenant-b", Permission::ManageTenant)];
+        let ctx = AuthorizationContext::new(&user, &roles);
+
+        assert!(!ctx.allows(Permission::ManageTenant));
     }
 }
