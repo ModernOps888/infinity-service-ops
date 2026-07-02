@@ -388,4 +388,4 @@ It currently runs:
 
 ## License
 
-Intended license: Apache-2.0
+Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
