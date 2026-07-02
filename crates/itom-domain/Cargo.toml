@@ -1,0 +1,9 @@
+[package]
+name = "itom-domain"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+cmdb-domain.workspace = true
+platform-core.workspace = true

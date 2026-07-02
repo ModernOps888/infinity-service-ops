@@ -1,0 +1,32 @@
+[workspace]
+members = ["apps/api-gateway", "apps/connector-host",
+    "apps/control-plane", "apps/event-relay", "apps/migrator", "apps/worker",
+    "crates/ai-orchestrator", "crates/audit-core", "crates/automation-library", "crates/cmdb-domain", "crates/event-core",
+    "crates/integration-core", "crates/itom-domain", "crates/persistence-core", "crates/platform-core",
+    "crates/platform-domain",
+    "crates/policy-engine", "crates/search-knowledge", "crates/secops-domain",
+    "crates/security-foundation", "crates/workflow-engine",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+license = "Apache-2.0"
+version = "0.1.0"
+
+[workspace.dependencies]
+ai-orchestrator = { path = "crates/ai-orchestrator" }
+automation-library = { path = "crates/automation-library" }
+audit-core = { path = "crates/audit-core" }
+cmdb-domain = { path = "crates/cmdb-domain" }
+event-core = { path = "crates/event-core" }
+integration-core = { path = "crates/integration-core" }
+itom-domain = { path = "crates/itom-domain" }
+persistence-core = { path = "crates/persistence-core" }
+platform-core = { path = "crates/platform-core" }
+platform-domain = { path = "crates/platform-domain" }
+policy-engine = { path = "crates/policy-engine" }
+search-knowledge = { path = "crates/search-knowledge" }
+secops-domain = { path = "crates/secops-domain" }
+security-foundation = { path = "crates/security-foundation" }
+workflow-engine = { path = "crates/workflow-engine" }

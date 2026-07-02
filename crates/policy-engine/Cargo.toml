@@ -1,0 +1,8 @@
+[package]
+name = "policy-engine"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+platform-domain.workspace = true
+security-foundation.workspace = true

@@ -1,0 +1,8 @@
+[package]
+name = "search-knowledge"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+platform-domain.workspace = true

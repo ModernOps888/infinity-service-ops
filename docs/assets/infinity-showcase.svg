@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1627"/>
+      <stop offset="1" stop-color="#040A13"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#11243D"/>
+      <stop offset="1" stop-color="#0C1830"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="28" fill="url(#bg)"/>
+  <rect x="28" y="28" width="300" height="844" rx="28" fill="#0D1B30" stroke="#21446E"/>
+  <rect x="54" y="54" width="248" height="136" rx="22" fill="url(#panel)" stroke="#2D5B90"/>
+  <text x="76" y="104" fill="#F3F7FF" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Infinity Service Ops</text>
+  <text x="76" y="142" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">Sovereign enterprise service operations</text>
+  <text x="76" y="168" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">for critical organizations.</text>
+
+  <rect x="54" y="230" width="248" height="84" rx="18" fill="#132847" stroke="#4C89C9"/>
+  <text x="76" y="267" fill="#FFFFFF" font-family="Segoe UI, Arial" font-size="24" font-weight="700">Control Plane</text>
+  <text x="76" y="293" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="16">Policy, residency, tenant posture</text>
+
+  <g fill="#0F213A" stroke="#203C61">
+    <rect x="54" y="336" width="248" height="76" rx="18"/>
+    <rect x="54" y="430" width="248" height="76" rx="18"/>
+    <rect x="54" y="524" width="248" height="76" rx="18"/>
+    <rect x="54" y="618" width="248" height="76" rx="18"/>
+  </g>
+  <g fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="22" font-weight="700">
+    <text x="76" y="380">Service Graph</text>
+    <text x="76" y="474">SecOps</text>
+    <text x="76" y="568">Automation</text>
+    <text x="76" y="662">AI Governance</text>
+  </g>
+  <g fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="16">
+    <text x="76" y="404">CMDB, dependencies, impact</text>
+    <text x="76" y="498">Findings, cases, evidence</text>
+    <text x="76" y="592">Guardrailed workflows</text>
+    <text x="76" y="686">Local/private model routing</text>
+  </g>
+
+  <rect x="356" y="28" width="1216" height="250" rx="28" fill="#0D1B30" stroke="#21446E"/>
+  <text x="396" y="96" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="52" font-weight="700">Run enterprise operations without surrendering your data.</text>
+  <text x="396" y="144" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="22">Infinity Service Ops combines ITSM, CMDB, ITOM, SecOps, automation,</text>
+  <text x="396" y="174" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="22">and AI guardrails under customer-controlled sovereignty.</text>
+
+  <g>
+    <rect x="396" y="204" width="180" height="36" rx="18" fill="#123055" stroke="#356BA3"/>
+    <rect x="592" y="204" width="160" height="36" rx="18" fill="#123055" stroke="#356BA3"/>
+    <rect x="768" y="204" width="196" height="36" rx="18" fill="#123055" stroke="#356BA3"/>
+    <rect x="980" y="204" width="186" height="36" rx="18" fill="#123055" stroke="#356BA3"/>
+    <g fill="#DDEBFF" font-family="Segoe UI, Arial" font-size="16">
+      <text x="420" y="227">Customer-managed keys</text>
+      <text x="620" y="227">Tenant isolation</text>
+      <text x="795" y="227">Auditable automation</text>
+      <text x="1013" y="227">M365 / Google / Okta</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="356" y="308" width="760" height="564" rx="28" fill="#0D1B30" stroke="#21446E"/>
+    <text x="396" y="362" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Operational timeline</text>
+    <g>
+      <rect x="396" y="394" width="680" height="112" rx="22" fill="#13233C" stroke="#3D587D"/>
+      <text x="420" y="432" fill="#FFC4CE" font-family="Segoe UI, Arial" font-size="14">P1 INCIDENT</text>
+      <text x="420" y="466" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="28" font-weight="700">Mail bridge degraded in UK South</text>
+      <text x="420" y="494" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">Correlated monitoring signals linked through the service graph and routed</text>
+      <text x="420" y="518" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">into a tenant-safe remediation workflow.</text>
+    </g>
+    <g>
+      <rect x="396" y="530" width="680" height="112" rx="22" fill="#13233C" stroke="#3D587D"/>
+      <text x="420" y="568" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="14">POLICY EVALUATION</text>
+      <text x="420" y="602" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="28" font-weight="700">Emergency change requires two-person approval</text>
+      <text x="420" y="630" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">High-risk workflows pause automatically until the configured control roles</text>
+      <text x="420" y="654" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">approve execution.</text>
+    </g>
+    <g>
+      <rect x="396" y="666" width="680" height="112" rx="22" fill="#13233C" stroke="#3D587D"/>
+      <text x="420" y="704" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="14">SECOPS</text>
+      <text x="420" y="738" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="28" font-weight="700">Critical vulnerability case promoted from finding</text>
+      <text x="420" y="766" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">Evidence is attached with chain-of-custody metadata and routed to</text>
+      <text x="420" y="790" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="18">remediation owners.</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="1140" y="308" width="432" height="564" rx="28" fill="#0D1B30" stroke="#21446E"/>
+    <text x="1178" y="362" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Automation library</text>
+    <g>
+      <rect x="1178" y="394" width="356" height="120" rx="22" fill="#13233C" stroke="#3D587D"/>
+      <text x="1204" y="438" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="22" font-weight="700">Microsoft 365 major incident bridge</text>
+      <text x="1204" y="474" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="17">Event ingested → incident opened →</text>
+      <text x="1204" y="498" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="17">bridge notification → approval gate</text>
+    </g>
+    <g>
+      <rect x="1178" y="536" width="356" height="120" rx="22" fill="#13233C" stroke="#3D587D"/>
+      <text x="1204" y="580" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="22" font-weight="700">Okta access request fulfillment</text>
+      <text x="1204" y="616" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="17">Catalog request → manager approval →</text>
+      <text x="1204" y="640" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="17">webhook call → audit trail</text>
+    </g>
+    <g>
+      <rect x="1178" y="678" width="356" height="120" rx="22" fill="#13233C" stroke="#3D587D"/>
+      <text x="1204" y="722" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="22" font-weight="700">Critical vulnerability remediation</text>
+      <text x="1204" y="758" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="17">Finding import → security case → patch</text>
+      <text x="1204" y="782" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="17">workflow → closure evidence</text>
+    </g>
+  </g>
+</svg>
+

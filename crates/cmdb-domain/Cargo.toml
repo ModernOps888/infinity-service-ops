@@ -1,0 +1,9 @@
+[package]
+name = "cmdb-domain"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+platform-core.workspace = true
+platform-domain.workspace = true

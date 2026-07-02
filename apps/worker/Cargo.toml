@@ -1,0 +1,10 @@
+[package]
+name = "worker"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+event-core.workspace = true
+persistence-core.workspace = true
+platform-core.workspace = true

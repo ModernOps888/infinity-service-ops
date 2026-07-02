@@ -1,0 +1,9 @@
+target/
+.idea/
+.vscode/
+*.pdb
+*.user
+*.log
+Thumbs.db
+Desktop.ini
+

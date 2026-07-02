@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1627"/>
+      <stop offset="1" stop-color="#07101D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="28" fill="url(#bg2)"/>
+  <rect x="40" y="40" width="1520" height="820" rx="28" fill="#0D1B30" stroke="#224266"/>
+  <text x="86" y="112" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="42" font-weight="700">Infinity Service Ops - SecOps and Governance Detail</text>
+  <text x="86" y="154" fill="#A7BAD9" font-family="Segoe UI, Arial" font-size="21">A product concept showing policy gates, evidence handling, and approval-aware automation.</text>
+
+  <rect x="86" y="210" width="440" height="250" rx="24" fill="#12233D" stroke="#375A84"/>
+  <text x="118" y="258" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="30" font-weight="700">Security posture</text>
+  <text x="118" y="306" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="18">Zero Trust baseline</text>
+  <text x="118" y="336" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">Passkeys, hardware-backed OIDC, mTLS</text>
+  <text x="118" y="384" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="18">Audit and policy coverage</text>
+  <text x="118" y="414" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">Workflow approvals, audit routing, event integrity subjects</text>
+
+  <rect x="560" y="210" width="480" height="250" rx="24" fill="#12233D" stroke="#375A84"/>
+  <text x="592" y="258" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="30" font-weight="700">SecOps workflow</text>
+  <text x="592" y="314" fill="#FFC2CC" font-family="Segoe UI, Arial" font-size="18">Finding imported</text>
+  <text x="592" y="342" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">Critical CVE on regulated tenant workload</text>
+  <text x="592" y="390" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="18">Case promoted with evidence</text>
+  <text x="592" y="418" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">Chain-of-custody metadata attached automatically</text>
+
+  <rect x="1074" y="210" width="440" height="250" rx="24" fill="#12233D" stroke="#375A84"/>
+  <text x="1106" y="258" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="30" font-weight="700">AI guardrails</text>
+  <text x="1106" y="314" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="18">Local/private model routing preferred</text>
+  <text x="1106" y="342" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">External inference blocked by default</text>
+  <text x="1106" y="390" fill="#A6FFE9" font-family="Segoe UI, Arial" font-size="18">Human approval for regulated actions</text>
+  <text x="1106" y="418" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">Prompt redaction required before execution</text>
+
+  <rect x="86" y="500" width="1428" height="300" rx="24" fill="#101F36" stroke="#31506F"/>
+  <text x="118" y="550" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="30" font-weight="700">Enterprise automation catalog</text>
+  <g>
+    <rect x="118" y="582" width="416" height="170" rx="20" fill="#13233C" stroke="#365B87"/>
+    <text x="146" y="626" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="24" font-weight="700">M365 major incident bridge</text>
+    <text x="146" y="664" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- audited escalation and comms</text>
+    <text x="146" y="692" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- incident manager approval gate</text>
+    <text x="146" y="720" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- vendor webhook validation</text>
+  </g>
+  <g>
+    <rect x="560" y="582" width="416" height="170" rx="20" fill="#13233C" stroke="#365B87"/>
+    <text x="588" y="626" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="24" font-weight="700">Okta access fulfillment</text>
+    <text x="588" y="664" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- manager approval</text>
+    <text x="588" y="692" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- least privilege control</text>
+    <text x="588" y="720" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- auditable vendor handoff</text>
+  </g>
+  <g>
+    <rect x="1002" y="582" width="480" height="170" rx="20" fill="#13233C" stroke="#365B87"/>
+    <text x="1030" y="626" fill="#F4F8FF" font-family="Segoe UI, Arial" font-size="24" font-weight="700">Critical vulnerability remediation</text>
+    <text x="1030" y="664" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- rollback-aware workflow</text>
+    <text x="1030" y="692" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- maintenance-window enforcement</text>
+    <text x="1030" y="720" fill="#C9D8F5" font-family="Segoe UI, Arial" font-size="18">- two-person approval for sensitive changes</text>
+  </g>
+</svg>

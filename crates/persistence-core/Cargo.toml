@@ -1,0 +1,10 @@
+[package]
+name = "persistence-core"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+audit-core.workspace = true
+event-core.workspace = true
+platform-core.workspace = true

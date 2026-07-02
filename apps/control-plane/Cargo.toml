@@ -1,0 +1,16 @@
+[package]
+name = "control-plane"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+ai-orchestrator.workspace = true
+automation-library.workspace = true
+audit-core.workspace = true
+cmdb-domain.workspace = true
+event-core.workspace = true
+integration-core.workspace = true
+platform-core.workspace = true
+platform-domain.workspace = true
+policy-engine.workspace = true
+security-foundation.workspace = true

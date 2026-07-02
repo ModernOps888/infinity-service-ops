@@ -1,0 +1,11 @@
+[package]
+name = "automation-library"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+integration-core.workspace = true
+platform-core.workspace = true
+platform-domain.workspace = true
+workflow-engine.workspace = true

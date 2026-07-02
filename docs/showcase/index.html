@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infinity Service Ops Showcase</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(13, 25, 44, 0.9);
+      --panel-2: rgba(17, 32, 58, 0.92);
+      --text: #eaf2ff;
+      --muted: #93a7c9;
+      --accent: #58a6ff;
+      --accent-2: #7df9d6;
+      --danger: #ff6b81;
+      --border: rgba(122, 162, 247, 0.18);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(88, 166, 255, 0.24), transparent 32%),
+        radial-gradient(circle at top right, rgba(125, 249, 214, 0.16), transparent 24%),
+        linear-gradient(180deg, #08101c 0%, #050a14 100%);
+    }
+
+    .app {
+      min-height: 100vh;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
+    }
+
+    .sidebar, .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .sidebar {
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand {
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0.18), rgba(125, 249, 214, 0.15));
+      border-radius: 18px;
+    }
+
+    .brand h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      letter-spacing: 0.4px;
+    }
+
+    .brand p, .nav small, .card p, .muted {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .nav {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .nav-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .nav-item.active {
+      border-color: rgba(88, 166, 255, 0.28);
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0.16), rgba(88, 166, 255, 0.06));
+    }
+
+    .workspace {
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+    }
+
+    .hero h2 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.1;
+    }
+
+    .pill-row, .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(88, 166, 255, 0.12);
+      border: 1px solid rgba(88, 166, 255, 0.22);
+      font-size: 13px;
+    }
+
+    .stats .card, .grid .card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .stats .card {
+      min-width: 170px;
+      flex: 1;
+    }
+
+    .card h3, .card h4 {
+      margin: 0 0 8px;
+    }
+
+    .big {
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .event {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+    }
+
+    .severity {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .severity.critical { background: rgba(255, 107, 129, 0.16); color: #ffb7c2; }
+    .severity.secure { background: rgba(125, 249, 214, 0.14); color: #a6ffe9; }
+
+    .automation-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .automation {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+    }
+
+    .flow {
+      margin-top: 10px;
+      color: #c7d7f6;
+      font-size: 13px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Infinity Service Ops</h1>
+        <p>Sovereign enterprise service operations for critical organizations.</p>
+      </div>
+      <div class="nav">
+        <div class="nav-item active"><strong>Control Plane</strong><br><small>Policy, residency, tenant posture</small></div>
+        <div class="nav-item"><strong>Service Graph</strong><br><small>CMDB, dependencies, impact</small></div>
+        <div class="nav-item"><strong>SecOps</strong><br><small>Findings, cases, evidence</small></div>
+        <div class="nav-item"><strong>Automation</strong><br><small>Guardrailed workflows</small></div>
+        <div class="nav-item"><strong>AI Governance</strong><br><small>Local/private model routing</small></div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="panel hero">
+        <div>
+          <h2>Run enterprise operations without surrendering your data.</h2>
+          <p class="muted">Infinity Service Ops is designed for regulated organizations that need ITSM, CMDB, ITOM, SecOps, automation, and AI guardrails under customer-controlled sovereignty.</p>
+          <div class="pill-row">
+            <span class="pill">Customer-managed keys</span>
+            <span class="pill">Tenant isolation</span>
+            <span class="pill">Auditable automation</span>
+            <span class="pill">M365 / Google / Okta</span>
+          </div>
+          <div class="stats">
+            <div class="card">
+              <div class="big">27</div>
+              <p>Tenant-scoped data domains modeled for secure operations.</p>
+            </div>
+            <div class="card">
+              <div class="big">3</div>
+              <p>Enterprise-ready automation templates shipping by default.</p>
+            </div>
+            <div class="card">
+              <div class="big">100%</div>
+              <p>Human approval enforced for sensitive regulated workflows.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Security posture</h3>
+          <div class="event">
+            <span class="severity secure">Zero Trust</span>
+            <p>Passkeys, hardware-backed OIDC, mTLS, audit chaining, egress control, and policy gates across automation and AI.</p>
+          </div>
+          <div class="event">
+            <span class="severity critical">Guardrail</span>
+            <p>External AI inference blocked unless explicitly allowed and redaction is enforced before execution.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="panel card">
+          <h3>Operational timeline</h3>
+          <div class="timeline">
+            <div class="event">
+              <span class="severity critical">P1 Incident</span>
+              <h4>Mail bridge degraded in UK South</h4>
+              <p>Linked to service graph dependencies, correlated monitoring events, and tenant-safe remediation workflows.</p>
+            </div>
+            <div class="event">
+              <span class="severity secure">Policy Evaluation</span>
+              <h4>Emergency change requires two-person approval</h4>
+              <p>Workflow paused automatically until the configured approver role signs off.</p>
+            </div>
+            <div class="event">
+              <span class="severity secure">SecOps</span>
+              <h4>Critical vulnerability case promoted from finding</h4>
+              <p>Evidence captured with chain-of-custody metadata and remediation tasks routed to the owning team.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel card">
+          <h3>Automation library</h3>
+          <div class="automation-list">
+            <div class="automation">
+              <strong>Microsoft 365 major incident bridge</strong>
+              <div class="flow">Event ingested → incident opened → bridge notification → approval gate</div>
+            </div>
+            <div class="automation">
+              <strong>Okta access request fulfillment</strong>
+              <div class="flow">Catalog request → manager approval → webhook call → audit trail</div>
+            </div>
+            <div class="automation">
+              <strong>Critical vulnerability remediation</strong>
+              <div class="flow">Finding import → security case → rollback-aware patch workflow → closure evidence</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">Infinity Service Ops showcase concept for README visuals</div>
+    </main>
+  </div>
+</body>
+</html>
+
