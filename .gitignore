@@ -7,3 +7,6 @@ target/
 Thumbs.db
 Desktop.ini
 
+# Private marketing / social content (kept local, never published)
+docs/linkedin/
+
