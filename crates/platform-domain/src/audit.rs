@@ -37,6 +37,7 @@ pub struct AuditEvent {
 }
 
 impl AuditEvent {
+    #[allow(clippy::too_many_arguments)]
     pub fn for_resource(
         id: AuditEventId,
         tenant_id: TenantId,

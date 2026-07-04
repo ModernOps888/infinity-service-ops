@@ -155,7 +155,28 @@ This scaffold is not "impenetrable" today, and no honest platform can guarantee 
 - policy hooks where enforcement belongs
 - a structure ready for deeper hardening
 
-### Security hardening completed (this iteration)
+### Security hardening completed (latest iteration)
+
+The latest iteration closed a set of **workflow approval-gate bypass vulnerabilities** and
+added supply-chain gates to CI:
+
+- **Runtime approval-gate enforcement** — `WorkflowExecution::approve` now validates that
+  the gate exists, verifies the approver holds the gate's required role, records who
+  approved, and only transitions to `Running` once **every** gate is approved (previously a
+  single call with *any* id unlocked execution).
+- **Separation of duties** — the actor that started a workflow execution can no longer
+  approve it.
+- **Approval replay rejection** — a gate can only be approved once.
+- **Step/approval ordering enforced** — steps cannot be completed or retried while an
+  execution is `WaitingApproval`, closing two approval-bypass paths.
+- **Retry budgets** — every step has an enforced `max_step_attempts` budget; exhausting it
+  fails the execution instead of retrying forever.
+- **Typed guardrail violations** — every enforcement failure is a `GuardrailViolation`
+  value ready to be routed to the audit stream, never a silent no-op.
+- **CI supply-chain gates** — least-privilege workflow token, `cargo clippy -D warnings`,
+  and a `cargo audit` (RustSec advisory) job.
+
+### Security hardening completed (previous iteration)
 
 A focused security assessment of the current scaffold identified and fixed the following
 access-control and data-egress weaknesses:
@@ -183,6 +204,18 @@ Further production hardening still required:
 - network egress policy enforcement (incl. clickjacking headers at the serving layer)
 - backup / restore / key rotation procedures
 - full threat modeling and penetration testing
+
+## Workflow guardrails at runtime
+
+The workflow engine enforces its guardrails as code, not convention:
+
+- approval gates are cloned onto each execution and tracked individually
+- approvers must hold the gate's declared role
+- initiators cannot approve their own executions (separation of duties)
+- approvals cannot be replayed
+- steps cannot run, complete, or retry until all gates are approved
+- per-step retry budgets fail the execution when exhausted
+- every violation is a typed `GuardrailViolation` suitable for audit routing
 
 ## Automation library
 
@@ -361,30 +394,48 @@ Basic CI has been added at:
 It currently runs:
 
 - `cargo fmt --all --check`
+- `cargo clippy --workspace --all-targets -- -D warnings`
 - `cargo test --workspace`
+- `cargo audit` (RustSec advisory scan, separate least-privilege job)
 
 ## Roadmap
 
-### Near-term
+The roadmap is organized as security-driven milestones: each milestone must leave the
+platform **more** trustworthy than the last, never trading security for features.
 
-- persist the current domain models in PostgreSQL
-- add real Axum APIs
-- add tenant-safe storage boundaries
-- enforce workflow guardrails at runtime
-- connect the frontend app to real Axum APIs and tenant-safe persistence
+### Milestone 1 — Trusted core (near-term)
 
-> Recently completed: tenant-scoped RBAC enforcement, audience-aware knowledge search,
-> regulated-data AI egress guardrails, XSS-safe frontend rendering, and a strict frontend CSP
-> (see the security hardening notes above and `CHANGELOG.md`).
+- persist the current domain models in PostgreSQL with **row-level security and
+  per-tenant isolation from day one** (not retrofitted later)
+- real Axum APIs behind authn/authz middleware (OIDC + passkeys), with per-request
+  tenant context propagation
+- request signing and replay protection at the API gateway
+- **tamper-evident (hash-chained) audit persistence** so audit history cannot be
+  silently rewritten
+- connect the frontend to real APIs with hardened sessions (CSRF protection,
+  `SameSite` cookies, security headers enforced at the serving layer)
 
-### Later
+> Completed from this milestone: runtime workflow guardrails — role-verified approvals,
+> separation of duties, approval replay rejection, step/approval ordering, and retry
+> budgets (see `CHANGELOG.md`).
 
-- signed connector packages
-- richer workflow packs
-- deeper Microsoft / Google / Okta integration
-- policy-as-code engine integration
-- production-grade deployment references
+### Milestone 2 — Supply chain and connectors (mid-term)
+
+- signed connector packages with manifest verification before load
+- secret broker / KMS integration with customer-managed keys
+- policy-as-code engine integration for deploy-time and runtime decisions
+- SBOM generation and dependency policy enforcement (`cargo deny`) in CI
+
+> Completed from this milestone: RustSec `cargo audit` job, clippy-as-error, and
+> least-privilege CI token permissions.
+
+### Milestone 3 — Enterprise depth (later)
+
+- richer workflow packs built on the guardrailed engine
+- deeper Microsoft / Google / Okta integrations through the isolated connector host
+- production-grade deployment references, including an air-gapped reference
 - private model routing and secure AI evaluation harnesses
+- external penetration test and published threat model
 
 ## License
 

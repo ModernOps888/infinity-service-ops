@@ -1,6 +1,8 @@
 use integration_core::{ConnectorCapability, ConnectorDescriptor, native_connector_catalog};
 use platform_core::DataClass;
-use workflow_engine::{ApprovalGate, WorkflowAction, WorkflowDefinition, WorkflowTrigger};
+use workflow_engine::{
+    ApprovalGate, DEFAULT_MAX_STEP_ATTEMPTS, WorkflowAction, WorkflowDefinition, WorkflowTrigger,
+};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum AutomationOutcome {
@@ -101,7 +103,9 @@ pub fn default_automation_library() -> Vec<AutomationTemplate> {
                     id: "approval-major-incident".to_string(),
                     approver_role: "incident-manager".to_string(),
                     approved_at: None,
+                    approved_by: None,
                 }],
+                max_step_attempts: DEFAULT_MAX_STEP_ATTEMPTS,
             },
         },
         AutomationTemplate {
@@ -143,7 +147,9 @@ pub fn default_automation_library() -> Vec<AutomationTemplate> {
                     id: "approval-access-request".to_string(),
                     approver_role: "manager".to_string(),
                     approved_at: None,
+                    approved_by: None,
                 }],
+                max_step_attempts: DEFAULT_MAX_STEP_ATTEMPTS,
             },
         },
         AutomationTemplate {
@@ -200,7 +206,9 @@ pub fn default_automation_library() -> Vec<AutomationTemplate> {
                     id: "approval-vuln-remediation".to_string(),
                     approver_role: "security-lead".to_string(),
                     approved_at: None,
+                    approved_by: None,
                 }],
+                max_step_attempts: DEFAULT_MAX_STEP_ATTEMPTS,
             },
         },
     ]

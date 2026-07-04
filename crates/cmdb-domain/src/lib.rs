@@ -122,11 +122,11 @@ impl ServiceGraph {
                     None
                 };
 
-                if let Some(next) = next {
-                    if seen.insert(next.clone()) {
-                        queue.push_back(next.clone());
-                        ordered.push(next);
-                    }
+                if let Some(next) = next
+                    && seen.insert(next.clone())
+                {
+                    queue.push_back(next.clone());
+                    ordered.push(next);
                 }
             }
         }
